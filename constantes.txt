@@ -1,0 +1,19 @@
+package main
+
+import "fmt"
+    const soyUnByte byte = 12
+	const soyUnEntero int = 123123
+	const soyUnFloat float32 = 32123.432312
+	const soyUnString string = "un string"
+	const soyUnBool bool = true
+
+func main() {
+
+	
+
+	fmt.Println( soyUnString,
+		soyUnEntero, soyUnFloat, soyUnFloat)
+
+	
+
+}

@@ -1,0 +1,73 @@
+package main
+import "fmt"
+import "time"
+
+func main(){
+	var month string
+	var actualMonth time.Month
+	var givenMonth  time.Month
+	var ValidMonth	bool = true
+	var condition bool
+	
+	fmt.Println("Por favor ingrese el nombre del un mes\n")
+
+	for condition == false {
+
+		fmt.Scanln(&month)
+
+
+		switch month {
+		case "enero":
+			givenMonth = time.January
+			condition = true
+		case "febrero":
+			givenMonth = time.February
+			condition = true
+		case "marzo":
+			givenMonth = time.March
+			condition = true
+		case "abril":
+			givenMonth = time.April
+			condition = true
+		case "mayo":
+			givenMonth = time.May
+			condition = true
+		case "junio":
+			givenMonth = time.June
+			condition = true
+		case "julio":
+			givenMonth = time.July
+			condition = true
+		case "agosto":
+			givenMonth = time.August
+			condition = true
+		case "septiembre":
+			givenMonth = time.September
+			condition = true
+		case "octubre":
+			givenMonth = time.October
+			condition = true
+		case "noviembre":
+			givenMonth = time.November
+			condition = true
+		case "diciembre":
+			givenMonth = time.December
+			condition = true
+		default:
+			ValidMonth = false
+			condition = false
+			fmt.Print("Entrada invalida\n vuelva a ingresar el mes\n")
+		}
+	}
+	if ValidMonth {
+		actualMonth = time.Now().Month()
+		if actualMonth == givenMonth {
+			fmt.Println("estamos en el corriente")
+		} else {
+			fmt.Println("no es el mes corriente")
+		}
+	} else {
+		fmt.Println("Ni siquiera es un mes")
+	}
+
+}

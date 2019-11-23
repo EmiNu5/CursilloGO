@@ -41,6 +41,7 @@ func main() {
 	for f = 0; f < len(matriz); f++ {
 		contadorFila = [9]int{}
 		contadorColumna = [9]int{}
+
 		for c = 0; c < len(matriz[f]); c++ {
 
 			contadorFila[(matriz[f][c])-1]++

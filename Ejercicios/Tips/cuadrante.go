@@ -16,13 +16,13 @@ func main() {
 	}
 	var f int
 	var c int
+
 	for f = 0; f < len(matriz); f++ {
 		if f%3 == 0 {
 			fmt.Println("+ - - - + - - - + - - - +")
 		}
 		for c = 0; c < len(matriz); c++ {
 			if c%3 == 0 {
-				fmt.Print()
 				fmt.Print("|")
 				fmt.Printf("%3d", matriz[f][c])
 			} else {
@@ -35,16 +35,12 @@ func main() {
 	fmt.Println("+ - - - + - - - + - - - +")
 
 	var contadorFila [9]int
-	//var contadorColumna [9]int
-	var valid bool
+	var valid bool = true
 
 	for f = 0; f < 9; f++ {
+		contadorFila = [9]int{}
 		for c = 0; c < 9; c++ {
-			// contadorColumna[(matriz[c][f])-1]++
-			// if contadorColumna[(matriz[c][f])-1] > 1 {
-			// 	valid = false
-			// 	break
-			// }
+
 			contadorFila[(matriz[f][c])-1]++
 			if contadorFila[(matriz[f][c])-1] > 1 {
 				valid = false
@@ -55,7 +51,7 @@ func main() {
 	if !valid {
 		fmt.Print("no cumple las reglas")
 	} else {
-		fmt.Print("cumple")
+		fmt.Print("cumple las regas")
 	}
 
 }

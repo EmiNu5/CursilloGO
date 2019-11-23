@@ -90,13 +90,13 @@ func main() {
 			}
 		}
 		if !unico {
-			fmt.Printf(" numero %d repetido coordenada %d %d .\n", matriz[f][c], f, c)
+			fmt.Printf("Filas: numero %d repetido coordenada %d %d .\n", matriz[f][c], f, c)
 		} else {
 			fmt.Printf("fila %d unica \n", f)
 		}
 	}
 	for f = 0; f < len(matriz); f++ {
-		//las columnas deben contener solo números del 1 al 9
+		// las columnas no debe contener números repetidos
 		monomatriz = []int{}
 		for c = 0; c < len(matriz); c++ {
 			monomatriz = append(monomatriz, matriz[c][f])

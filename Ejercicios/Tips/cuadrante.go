@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	var matriz [9][9]int = [9][9]int{
-		[9]int{1, 2, 3, 4, 5, 6, 7, 8, 9},
+		[9]int{1, 2, 3, 4, 5, 1, 7, 8, 9},
 		[9]int{7, 8, 9, 1, 2, 3, 4, 5, 6},
 		[9]int{4, 5, 6, 7, 8, 9, 1, 2, 3},
 		[9]int{9, 1, 2, 3, 4, 5, 6, 7, 8},
@@ -35,15 +35,24 @@ func main() {
 	fmt.Println("+ - - - + - - - + - - - +")
 
 	var contadorFila [9]int
+	var contadorColumna [9]int
 	var valid bool = true
 
 	for f = 0; f < 9; f++ {
 		contadorFila = [9]int{}
+		contadorColumna = [9]int{}
 		for c = 0; c < 9; c++ {
-
+ 
 			contadorFila[(matriz[f][c])-1]++
+			contadorColumna[(matriz[f][c])-1]++
+
 			if contadorFila[(matriz[f][c])-1] > 1 {
-				valid = false
+				fmt.Println(contadorFila)
+				valid =false
+				break
+			}
+			if contadorColumna[(matriz[f][c])-1]>1{
+				valid =false
 				break
 			}
 		}

@@ -36,22 +36,22 @@ func main() {
 
 	var contadorFila [9]int
 	var contadorColumna [9]int
-	var contadorCuadrantes [3][9]int
 	var valid bool = true
 
 	for f = 0; f < len(matriz); f++ {
 		contadorFila = [9]int{}
 		contadorColumna = [9]int{}
 		for c = 0; c < len(matriz[f]); c++ {
- 
+
 			contadorFila[(matriz[f][c])-1]++
-			contadorColumna[(matriz[f][c])-1]++
+			contadorColumna[(matriz[c][f])-1]++
+
 			if contadorFila[(matriz[f][c])-1] > 1 {
-				valid =false
+				valid = false
 				break
 			}
-			if contadorColumna[(matriz[f][c])-1]>1{
-				valid =false
+			if contadorColumna[(matriz[c][f])-1] > 1 {
+				valid = false
 				break
 			}
 
@@ -60,7 +60,7 @@ func main() {
 	if !valid {
 		fmt.Print("no cumple las reglas")
 	} else {
-		fmt.Print("cumple las regas")
+		fmt.Print("cumple las reglas")
 	}
 
 }

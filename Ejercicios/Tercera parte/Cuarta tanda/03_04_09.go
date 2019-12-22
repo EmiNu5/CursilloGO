@@ -3,13 +3,18 @@ package main
 import "fmt"
 
 func main() {
-	const filas int = 5
+	const filas int = 10
 	var laberinto [filas][filas]bool = [filas][filas]bool{
-		[filas]bool{true, true, false, false, false},
-		[filas]bool{false, true, false, false, false},
-		[filas]bool{false, true, true, true, false},
-		[filas]bool{false, false, false, true, true},
-		[filas]bool{false, false, false, false, true},
+		[filas]bool{true, true, true, true, false, false, false, false, false, false},
+		[filas]bool{false, false, false, true, false, false, false, false, false, false},
+		[filas]bool{false, false, false, true, false, false, false, false, false, false},
+		[filas]bool{false, false, false, true, true, true, true, false, false, false},
+		[filas]bool{false, false, false, false, false, false, true, false, false, false},
+		[filas]bool{false, false, false, false, false, false, true, false, false, false},
+		[filas]bool{false, false, false, false, false, false, true, true, true, true},
+		[filas]bool{false, false, false, false, false, false, false, false, false, true},
+		[filas]bool{false, false, false, false, false, false, false, false, false, true},
+		[filas]bool{false, false, false, false, false, false, false, false, false, true},
 	}
 	var f int
 	var c int
@@ -52,7 +57,7 @@ func main() {
 			break
 		}
 	}
-	if f == 4 && c == 4 {
+	if f == filas-1 && c == filas-1 {
 		salida = true
 	}
 	if !salida {

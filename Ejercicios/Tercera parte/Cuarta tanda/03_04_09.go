@@ -1,0 +1,63 @@
+package main
+
+import "fmt"
+
+func main() {
+	const filas int = 5
+	var laberinto [filas][filas]bool = [filas][filas]bool{
+		[filas]bool{true, true, false, false, false},
+		[filas]bool{false, true, false, false, false},
+		[filas]bool{false, true, true, true, false},
+		[filas]bool{false, false, false, true, true},
+		[filas]bool{false, false, false, false, true},
+	}
+	var f int
+	var c int
+	var fAnt int
+	var cAnt int
+	var camino []string = []string{"0,0"}
+	var fc string
+	var salida bool
+
+	for f < len(laberinto) { // LABERINTO
+		if c != filas-1 && laberinto[f][c+1] && (cAnt != c+1) {
+			/*DERECHA*/
+			cAnt = c
+			fAnt = f
+			c++
+			fc = fmt.Sprintf("-> %d,%d", f, c)
+			camino = append(camino, fc)
+		} else if f != filas-1 && laberinto[f+1][c] && (fAnt != f+1) {
+			/*ABAJO*/
+			fAnt = f
+			cAnt = c
+			f++
+			fc = fmt.Sprintf("-> %d,%d", f, c)
+			camino = append(camino, fc)
+		} else if f != 0 && laberinto[f-1][c] && (fAnt != f-1) {
+			/*ARRIBA*/
+			fAnt = f
+			cAnt = c
+			f--
+			fc = fmt.Sprintf("-> %d,%d", f, c)
+			camino = append(camino, fc)
+		} else if c != 0 && laberinto[f][c-1] && (cAnt != c-1) {
+			/*IZQUIERDA*/
+			cAnt = c
+			fAnt = f
+			c--
+			fc = fmt.Sprintf("-> %d,%d", f, c)
+			camino = append(camino, fc)
+		} else {
+			break
+		}
+	}
+	if f == 4 && c == 4 {
+		salida = true
+	}
+	if !salida {
+		fmt.Print("No tiene salida")
+	} else {
+		fmt.Printf("el camino es: %s", camino)
+	}
+}

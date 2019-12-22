@@ -27,7 +27,7 @@ func main(){
 
 	for i=0;i<len(matrix);i++{
 		for j=0;j<len(matrix);j++{
-			if (matrix + j)/2 
+		if (matrix + j)/2 
 		}
 		fmt.Println(matrix[i])
 		

@@ -13,7 +13,7 @@ func main() {
 		[filas]bool{false, false, false, true, true, true, true, false, false, false},
 		[filas]bool{false, false, false, false, false, false, true, false, false, false},
 		[filas]bool{false, false, false, false, false, false, true, false, false, false},
-		[filas]bool{false, false, false, false, false, false, true, true, true, true},
+		[filas]bool{false, false, false, false, false, false, false, true, true, true},
 		[filas]bool{false, false, false, false, false, false, false, false, false, true},
 		[filas]bool{false, false, false, false, false, false, false, false, false, true},
 		[filas]bool{false, false, false, false, false, false, false, false, false, true},
@@ -51,7 +51,10 @@ func main() {
 	var fc string
 	var salida bool
 
-	for f < len(laberinto) { // LABERINTO
+	for f < len(laberinto) { /*LABERINTO*/
+		if f == filas-1 && c == filas-1 {
+			salida = true
+		}
 		if c != filas-1 && laberinto[f][c+1] && (cAnt != c+1) {
 			/*DERECHA*/
 			cAnt = c
@@ -83,9 +86,6 @@ func main() {
 		} else {
 			break
 		}
-	}
-	if f == filas-1 && c == filas-1 {
-		salida = true
 	}
 	if !salida {
 		fmt.Print("No tiene salida")

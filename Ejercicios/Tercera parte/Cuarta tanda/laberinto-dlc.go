@@ -54,6 +54,7 @@ func main() {
 	for f < len(laberinto) { /*LABERINTO*/
 		if f == filas-1 && c == filas-1 {
 			salida = true
+			break
 		}
 		if c != filas-1 && laberinto[f][c+1] && (cAnt != c+1) {
 			/*DERECHA*/

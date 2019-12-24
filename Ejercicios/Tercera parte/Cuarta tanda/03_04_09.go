@@ -24,7 +24,7 @@ func main() {
 	var fc string
 	var salida bool
 
-	for f < len(laberinto) { // LABERINTO
+	for f < len(laberinto) { /*LABERINTO*/
 		if c != filas-1 && laberinto[f][c+1] && (cAnt != c+1) {
 			/*DERECHA*/
 			cAnt = c

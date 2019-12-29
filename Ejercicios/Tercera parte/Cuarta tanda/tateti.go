@@ -24,9 +24,23 @@ func main() {
 	fmt.Scan(&player2)
 	fmt.Printf("%s vs %s \n\n", player1, player2)
 
+	/*DIBUJITO VACIO*/
+	for x = 0; x < len(tablero); x++ {
+		for y = 0; y < len(tablero); y++ {
+			tablero[x][y] = ""
+			if y < 2 {
+				fmt.Print("   |")
+			} else {
+				fmt.Println("   ")
+			}
+		}
+		if x < 2 {
+			fmt.Println("-----------")
+		}
+	}
 	for {
 		if repetir == "s" {
-			/*DIBUJITO VACIO*/
+
 			for x = 0; x < len(tablero); x++ {
 				for y = 0; y < len(tablero); y++ {
 					tablero[x][y] = ""

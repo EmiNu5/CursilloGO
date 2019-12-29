@@ -15,7 +15,8 @@ func main() {
 	var ocupada bool
 	var i int
 	var ganador bool
-	var repetir string = "s"
+	var repetir string
+	var gameover bool
 
 	fmt.Println("♦♦♦- BIENVENIDO RANCHO APARTE -♦♦♦ \n")
 	fmt.Println("Player1 Ingresa tu nombre: ")
@@ -24,47 +25,34 @@ func main() {
 	fmt.Scan(&player2)
 	fmt.Printf("%s vs %s \n\n", player1, player2)
 
-	/*DIBUJITO VACIO*/
-	for x = 0; x < len(tablero); x++ {
-		for y = 0; y < len(tablero); y++ {
-			tablero[x][y] = ""
-			if y < 2 {
-				fmt.Print("   |")
-			} else {
-				fmt.Println("   ")
-			}
-		}
-		if x < 2 {
-			fmt.Println("-----------")
-		}
-	}
 	for {
-		if repetir == "s" {
 
-			for x = 0; x < len(tablero); x++ {
-				for y = 0; y < len(tablero); y++ {
-					tablero[x][y] = ""
-					if y < 2 {
-						fmt.Print("   |")
-					} else {
-						fmt.Println("   ")
-					}
-				}
-				if x < 2 {
-					fmt.Println("-----------")
+		/*DIBUJITO VACIO*/
+		for x = 0; x < len(tablero); x++ {
+			for y = 0; y < len(tablero); y++ {
+				tablero[x][y] = ""
+				if y < 2 {
+					fmt.Print("   |")
+				} else {
+					fmt.Println("   ")
 				}
 			}
+			if x < 2 {
+				fmt.Println("-----------")
+			}
+		}
 
+		for !gameover { /**/
 			limite = false
 			ocupada = false
-			if repetir == "s" && i%2 == 0 {
+			if i%2 == 0 {
 				for !limite && !ocupada {
-					fmt.Printf(" %s Ingrese la (X,Y) donde ira la ficha X\n", player1)
+					fmt.Printf(" %s ingresa la (X,Y) donde ira la ficha X\n", player1)
 					fmt.Scan(&x, &y)
 					if (x < minValor || x > maxValor) || (y < minValor || y > maxValor) {
-						fmt.Println("Valores fuera de rango, prueba numeros del 1 al 3")
+						fmt.Println("Valores fuera de rango, prueba numeros del 1 al 3\n")
 					} else if tablero[x-1][y-1] == "X" || tablero[x-1][y-1] == "O" {
-						fmt.Println("Ouchh casilla ocupada prueba otra ;) ")
+						fmt.Println("Ouchh casilla ocupada prueba otra \n")
 					} else {
 						tablero[x-1][y-1] = "X"
 						limite = true
@@ -74,12 +62,12 @@ func main() {
 				}
 			} else {
 				for !limite && !ocupada {
-					fmt.Printf(" %s Ingrese la (X,Y) donde ira la ficha O\n", player2)
+					fmt.Printf(" %s ingresa la (X,Y) donde ira la ficha O\n", player2)
 					fmt.Scan(&x, &y)
 					if (x < minValor || x > maxValor) || (y < minValor || y > maxValor) {
-						fmt.Println("Valores fuera de rango, prueba numeros del 1 al 3")
+						fmt.Println("Valores fuera de rango, prueba numeros del 1 al 3 \n")
 					} else if tablero[x-1][y-1] == "X" || tablero[x-1][y-1] == "O" {
-						fmt.Println("Ouchh casilla ocupada prueba otra ;) ")
+						fmt.Println("Ouchh casilla ocupada prueba otra \n ")
 					} else {
 						tablero[x-1][y-1] = "O"
 						limite = true
@@ -88,6 +76,7 @@ func main() {
 					}
 				}
 			}
+			/*CASOS DE GANADOR*/
 			if tablero[0][0] == tablero[0][1] && tablero[0][0] == tablero[0][2] {
 				if tablero[0][0] == "X" || tablero[0][0] == "O" {
 					ganador = true
@@ -102,6 +91,7 @@ func main() {
 					ganador = true
 				}
 			}
+
 			if tablero[1][1] == tablero[0][1] && tablero[1][1] == tablero[2][1] {
 				if tablero[1][1] == "X" || tablero[1][1] == "O" {
 					ganador = true
@@ -126,6 +116,7 @@ func main() {
 				}
 
 			}
+
 			/*DIBUJITO*/
 			for x = 0; x < len(tablero); x++ {
 				for y = 0; y < len(tablero); y++ {
@@ -142,40 +133,49 @@ func main() {
 			if ganador {
 				fmt.Print("Has ganado ")
 				if i%2 != 0 {
-					fmt.Printf("%s ", player1)
+					fmt.Print(player1)
 					for {
-						fmt.Println("Repetimos?? \n-- ingresa s para si y n para salir")
+						fmt.Println("\n Quieres volver a jugar? s/n")
 						fmt.Scan(&repetir)
 						if repetir == "s" || repetir == "n" {
 							break
 						}
 					}
-
 				} else {
-					fmt.Printf("%s ", player2)
+					fmt.Print(player2)
 					for {
-						fmt.Println("Repetimos?? \n-- ingresa s para si y n para salir")
+						fmt.Print("\n Quieres volver a jugar? s/n \n")
 						fmt.Scan(&repetir)
 						if repetir == "s" || repetir == "n" {
 							break
 						}
 					}
 				}
-			} else if i == 9 {
-				fmt.Println("Empateeee weeee ")
+			} else if i == 8 {
+				fmt.Print("Es un empate")
 				for {
-					fmt.Println("Repetimos?? \n Ingresa s para si y n para salir")
+					fmt.Print("Quieres volver a jugar? s/n \n")
 					fmt.Scan(&repetir)
 					if repetir == "s" || repetir == "n" {
 						break
 					}
 				}
+			}
+			if (ganador && repetir == "s") || (i == 8 && repetir == "s") {
 
-			}
-			if repetir == "n" {
-				fmt.Println("Adios")
+				tablero = [3][3]string{}
+				gameover = false
+				ganador = false
+				repetir = ""
+				i = 0
 				break
+			} else if repetir == "n" {
+				fmt.Println("Hasta la proxima")
+				gameover = true
 			}
+		}
+		if gameover {
+			break
 		}
 	}
 }

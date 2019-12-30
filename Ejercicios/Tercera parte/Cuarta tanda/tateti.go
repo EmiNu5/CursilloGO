@@ -11,8 +11,7 @@ func main() {
 	var tablero [3][3]string
 	const minValor int = 1
 	const maxValor int = 3
-	var limite bool
-	var ocupada bool
+	var casillaIncorrecta bool
 	var i int
 	var ganador bool
 	var repetir string
@@ -30,7 +29,7 @@ func main() {
 		/*DIBUJITO VACIO*/
 		for x = 0; x < len(tablero); x++ {
 			for y = 0; y < len(tablero); y++ {
-				tablero[x][y] = ""
+
 				if y < 2 {
 					fmt.Print("   |")
 				} else {
@@ -42,11 +41,10 @@ func main() {
 			}
 		}
 
-		for !gameover { /**/
-			limite = false
-			ocupada = false
+		for !gameover { /*Entrada y parametros */
+			casillaIncorrecta = false
 			if i%2 == 0 {
-				for !limite && !ocupada {
+				for !casillaIncorrecta {
 					fmt.Printf(" %s ingresa la (X,Y) donde ira la ficha X\n", player1)
 					fmt.Scan(&x, &y)
 					if (x < minValor || x > maxValor) || (y < minValor || y > maxValor) {
@@ -55,13 +53,12 @@ func main() {
 						fmt.Println("Ouchh casilla ocupada prueba otra \n")
 					} else {
 						tablero[x-1][y-1] = "X"
-						limite = true
-						ocupada = true
+						casillaIncorrecta = true
 						i++
 					}
 				}
 			} else {
-				for !limite && !ocupada {
+				for !casillaIncorrecta {
 					fmt.Printf(" %s ingresa la (X,Y) donde ira la ficha O\n", player2)
 					fmt.Scan(&x, &y)
 					if (x < minValor || x > maxValor) || (y < minValor || y > maxValor) {
@@ -70,8 +67,7 @@ func main() {
 						fmt.Println("Ouchh casilla ocupada prueba otra \n ")
 					} else {
 						tablero[x-1][y-1] = "O"
-						limite = true
-						ocupada = true
+						casillaIncorrecta = true
 						i++
 					}
 				}
@@ -134,34 +130,21 @@ func main() {
 				fmt.Print("Has ganado ")
 				if i%2 != 0 {
 					fmt.Print(player1)
-					for {
-						fmt.Println("\n Quieres volver a jugar? s/n")
-						fmt.Scan(&repetir)
-						if repetir == "s" || repetir == "n" {
-							break
-						}
-					}
 				} else {
 					fmt.Print(player2)
-					for {
-						fmt.Print("\n Quieres volver a jugar? s/n \n")
-						fmt.Scan(&repetir)
-						if repetir == "s" || repetir == "n" {
-							break
-						}
-					}
 				}
 			} else if i == 8 {
 				fmt.Print("Es un empate")
-				for {
-					fmt.Print("Quieres volver a jugar? s/n \n")
-					fmt.Scan(&repetir)
-					if repetir == "s" || repetir == "n" {
-						break
-					}
+			}
+			for ganador || i == 8 {
+				fmt.Println("\n Quieres volver a jugar? s/n ")
+				fmt.Scan(&repetir)
+				if repetir == "s" || repetir == "n" {
+					break
 				}
 			}
-			if (ganador && repetir == "s") || (i == 8 && repetir == "s") {
+
+			if repetir == "s" {
 
 				tablero = [3][3]string{}
 				gameover = false

@@ -40,13 +40,16 @@ func main() {
 				fmt.Println("-----------")
 			}
 		}
-
 		for !gameover { /*Entrada y parametros */
 			casillaIncorrecta = false
 			if i%2 == 0 {
+
 				for !casillaIncorrecta {
+					x = 0
+					y = 0
 					fmt.Printf(" %s ingresa la (X,Y) donde ira la ficha X\n", player1)
-					fmt.Scan(&x, &y)
+					fmt.Scanf("\n%d,%d", &x, &y)
+					fmt.Println(x, y)
 					if (x < minValor || x > maxValor) || (y < minValor || y > maxValor) {
 						fmt.Println("Valores fuera de rango, prueba numeros del 1 al 3\n")
 					} else if tablero[x-1][y-1] == "X" || tablero[x-1][y-1] == "O" {
@@ -59,8 +62,10 @@ func main() {
 				}
 			} else {
 				for !casillaIncorrecta {
+					x = 0
+					y = 0
 					fmt.Printf(" %s ingresa la (X,Y) donde ira la ficha O\n", player2)
-					fmt.Scan(&x, &y)
+					fmt.Scanf("\n%d,%d", &x, &y)
 					if (x < minValor || x > maxValor) || (y < minValor || y > maxValor) {
 						fmt.Println("Valores fuera de rango, prueba numeros del 1 al 3 \n")
 					} else if tablero[x-1][y-1] == "X" || tablero[x-1][y-1] == "O" {
@@ -136,7 +141,7 @@ func main() {
 			} else if i == 8 {
 				fmt.Print("Es un empate")
 			}
-			for ganador || i == 8 {
+			for ganador || i == 9 {
 				fmt.Println("\n Quieres volver a jugar? s/n ")
 				fmt.Scan(&repetir)
 				if repetir == "s" || repetir == "n" {

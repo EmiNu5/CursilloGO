@@ -49,7 +49,6 @@ func main() {
 					y = 0
 					fmt.Printf(" %s ingresa la (X,Y) donde ira la ficha X\n", player1)
 					fmt.Scanf("\n%d,%d", &x, &y)
-					fmt.Println(x, y)
 					if (x < minValor || x > maxValor) || (y < minValor || y > maxValor) {
 						fmt.Println("Valores fuera de rango, prueba numeros del 1 al 3\n")
 					} else if tablero[x-1][y-1] == "X" || tablero[x-1][y-1] == "O" {

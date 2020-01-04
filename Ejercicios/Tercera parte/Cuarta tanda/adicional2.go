@@ -90,7 +90,7 @@ func main() {
 					for {
 						x = rand.Intn(maxValor-minValor) + 1
 						y = rand.Intn(maxValor-minValor) + 1
-						if tablero[x-1][y-1] != "X" || tablero[x-1][y-1] != "O" {
+						if tablero[x-1][y-1] != "X" && tablero[x-1][y-1] != "O" {
 							break
 						}
 					}

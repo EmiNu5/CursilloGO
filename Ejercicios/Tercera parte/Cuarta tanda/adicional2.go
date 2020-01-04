@@ -56,7 +56,7 @@ func main() {
 	}
 
 	fmt.Printf("%s vs %s \n\n", player1, player2)
-	time.Sleep(2 * time.Second)
+
 	for {
 
 		/*DIBUJITO VACIO*/
@@ -87,8 +87,13 @@ func main() {
 			for !casillaCorrecta {
 				fmt.Printf(" %s ingresa la (X,Y) donde ira la ficha X\n", jugadorActual)
 				if i%2 != 0 && pc == "s" {
-					x = rand.Intn(maxValor-minValor) + 1
-					y = rand.Intn(maxValor-minValor) + 1
+					for {
+						x = rand.Intn(maxValor-minValor) + 1
+						y = rand.Intn(maxValor-minValor) + 1
+						if tablero[x-1][y-1] != "X" || tablero[x-1][y-1] != "O" {
+							break
+						}
+					}
 					time.Sleep(2 * time.Second)
 				} else {
 					fmt.Scanf("\n%d,%d", &x, &y)

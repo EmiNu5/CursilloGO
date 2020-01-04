@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
 func main() {
 
@@ -29,13 +33,30 @@ func main() {
 	var jugadorActual string
 	var fichaActual string
 
-	fmt.Println("♦♦♦- BIENVENIDO -♦♦♦ \n")
-	fmt.Println("Player1 Ingresa tu nombre: ")
-	fmt.Scan(&player1)
-	fmt.Println("Player2 ingresa tu nombre: ")
-	fmt.Scan(&player2)
-	fmt.Printf("%s vs %s \n\n", player1, player2)
+	var pc string
+	rand.Seed(time.Now().Unix())
 
+	fmt.Println("♦♦♦- BIENVENIDO -♦♦♦ \n")
+	for {
+		fmt.Println("Desea jugar contra la PC?? s/n")
+		fmt.Scan(&pc)
+		if pc == "s" || pc == "n" {
+			break
+		}
+	}
+	if pc == "n" {
+		fmt.Println("Player1 Ingresa tu nombre: ")
+		fmt.Scan(&player1)
+		fmt.Println("Player2 ingresa tu nombre: ")
+		fmt.Scan(&player2)
+	} else {
+		fmt.Println("Player1 Ingresa tu nombre: ")
+		fmt.Scan(&player1)
+		player2 = "PC"
+	}
+
+	fmt.Printf("%s vs %s \n\n", player1, player2)
+	time.Sleep(2 * time.Second)
 	for {
 
 		/*DIBUJITO VACIO*/
@@ -65,7 +86,13 @@ func main() {
 			casillaCorrecta = false
 			for !casillaCorrecta {
 				fmt.Printf(" %s ingresa la (X,Y) donde ira la ficha X\n", jugadorActual)
-				fmt.Scanf("\n%d,%d", &x, &y)
+				if i%2 != 0 && pc == "s" {
+					x = rand.Intn(maxValor-minValor) + 1
+					y = rand.Intn(maxValor-minValor) + 1
+					time.Sleep(2 * time.Second)
+				} else {
+					fmt.Scanf("\n%d,%d", &x, &y)
+				}
 				if (x < minValor || x > maxValor) || (y < minValor || y > maxValor) {
 					fmt.Println("Valores fuera de rango, prueba numeros del 1 al 3\n")
 				} else if tablero[x-1][y-1] == "X" || tablero[x-1][y-1] == "O" {

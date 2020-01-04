@@ -3,30 +3,42 @@ package main
 import "fmt"
 
 func main() {
-	var diagonal1 string = "\u2199"   // ↙
-	var diagonal2 string = "\u2196"   // ↖
-	var horizontal1 string = "\u2190" //←
-	var arriba1 string = "\u2191"     //↑
-	var player1 string = "e"
-	var player2 string = "g"
+
+	var player1 string
+	var player2 string
 	var x int
 	var y int
-	var tablero [5][4]string
+	var tablero [3][3]string
 	const minValor int = 1
 	const maxValor int = 3
-	var casillaIncorrecta bool
+	var casillaCorrecta bool
 	var i int
 	var ganador bool
 	var repetir string
 	var gameover bool
+	var horizontal1 string
+	var horizontal2 string
+	var horizontal3 string
+	var vertical1 string
+	var vertical2 string
+	var vertical3 string
+	var diagonalarriba string
+	var diagonalabajo string
+	var jugadorActual string
+	var fichaActual string
 
-	fmt.Println("♦♦♦- BIENVENIDO RANCHO APARTE -♦♦♦ \n")
+	fmt.Println("♦♦♦- BIENVENIDO -♦♦♦ \n")
+	fmt.Println("Player1 Ingresa tu nombre: ")
+	fmt.Scan(&player1)
+	fmt.Println("Player2 ingresa tu nombre: ")
+	fmt.Scan(&player2)
+	fmt.Printf("%s vs %s \n\n", player1, player2)
 
 	for {
 
 		/*DIBUJITO VACIO*/
-		for x = 0; x < 3; x++ {
-			for y = 0; y < 3; y++ {
+		for x = 0; x < len(tablero); x++ {
+			for y = 0; y < len(tablero); y++ {
 
 				if y < 2 {
 					fmt.Print("   |")
@@ -39,122 +51,88 @@ func main() {
 			}
 		}
 		for !gameover { /*Entrada y parametros */
-			casillaIncorrecta = false
+
 			if i%2 == 0 {
-
-				for !casillaIncorrecta {
-					x = 0
-					y = 0
-					fmt.Printf(" %s ingresa la (X,Y) donde ira la ficha X\n", player1)
-					fmt.Scanf("\n%d,%d", &x, &y)
-					if (x < minValor || x > maxValor) || (y < minValor || y > maxValor) {
-						fmt.Println("Valores fuera de rango, prueba numeros del 1 al 3\n")
-					} else if tablero[x][y-1] == "X" || tablero[x][y-1] == "O" {
-						fmt.Println("Ouchh casilla ocupada prueba otra \n")
-					} else {
-						tablero[x][y-1] = "X"
-						casillaIncorrecta = true
-						i++
-					}
-				}
+				jugadorActual = player1
+				fichaActual = "X"
 			} else {
-				for !casillaIncorrecta {
-					x = 0
-					y = 0
-					fmt.Printf(" %s ingresa la (X,Y) donde ira la ficha O\n", player2)
-					fmt.Scanf("\n%d,%d", &x, &y)
-					if (x < minValor || x > maxValor) || (y < minValor || y > maxValor) {
-						fmt.Println("Valores fuera de rango, prueba numeros del 1 al 3 \n")
-					} else if tablero[x][y-1] == "X" || tablero[x][y-1] == "O" {
-						fmt.Println("Ouchh casilla ocupada prueba otra \n ")
-					} else {
-						tablero[x][y-1] = "O"
-						casillaIncorrecta = true
-						i++
-					}
+				jugadorActual = player2
+				fichaActual = "O"
+			}
+
+			casillaCorrecta = false
+			for !casillaCorrecta {
+				fmt.Printf(" %s ingresa la (X,Y) donde ira la ficha X\n", jugadorActual)
+				fmt.Scanf("\n%d,%d", &x, &y)
+				if (x < minValor || x > maxValor) || (y < minValor || y > maxValor) {
+					fmt.Println("Valores fuera de rango, prueba numeros del 1 al 3\n")
+				} else if tablero[x-1][y-1] == "X" || tablero[x-1][y-1] == "O" {
+					fmt.Println("Ouchh casilla ocupada prueba otra \n")
+				} else {
+					tablero[x-1][y-1] = fichaActual
+					casillaCorrecta = true
 				}
 			}
+			i++
 			/*CASOS DE GANADOR*/
-			if tablero[1][0] == tablero[1][1] && tablero[1][0] == tablero[1][2] {
-				if tablero[1][0] == "X" || tablero[1][0] == "O" {
+			if tablero[0][0] == tablero[0][1] && tablero[0][0] == tablero[0][2] {
+				if tablero[0][0] == "X" || tablero[0][0] == "O" {
 					ganador = true
-					tablero[1][3] = diagonal1
+					horizontal1 = "\u2190"
+
 				}
-			} else if tablero[1][0] == tablero[2][0] && tablero[1][0] == tablero[3][0] {
-				if tablero[1][0] == "X" || tablero[1][0] == "O" {
+			} else if tablero[0][0] == tablero[1][0] && tablero[0][0] == tablero[2][0] {
+				if tablero[0][0] == "X" || tablero[0][0] == "O" {
 					ganador = true
-					tablero[4][0] = arriba1
+					vertical1 = "\u2191"
 				}
 
-			} else if tablero[1][0] == tablero[2][1] && tablero[1][0] == tablero[3][2] {
-				if tablero[1][0] == "X" || tablero[1][0] == "O" {
+			} else if tablero[0][0] == tablero[1][1] && tablero[0][0] == tablero[2][2] {
+				if tablero[0][0] == "X" || tablero[0][0] == "O" {
 					ganador = true
-					tablero[4][3] = diagonal2
+					diagonalarriba = "\u2196"
 				}
 			}
 
-			if tablero[2][1] == tablero[1][1] && tablero[2][1] == tablero[3][1] {
-				if tablero[2][1] == "X" || tablero[2][1] == "O" {
+			if tablero[1][1] == tablero[0][1] && tablero[1][1] == tablero[2][1] {
+				if tablero[1][1] == "X" || tablero[1][1] == "O" {
 					ganador = true
-					tablero[4][1] = arriba1
+					vertical2 = "\u2191"
 				}
-			} else if tablero[2][1] == tablero[1][2] && tablero[2][1] == tablero[3][0] {
-				if tablero[2][1] == "X" || tablero[2][1] == "O" {
+			} else if tablero[1][1] == tablero[0][2] && tablero[1][1] == tablero[2][0] {
+				if tablero[1][1] == "X" || tablero[1][1] == "O" {
 					ganador = true
-					tablero[0][3] = diagonal1
+					diagonalabajo = "\u2199"
 				}
-			} else if tablero[2][1] == tablero[2][0] && tablero[2][1] == tablero[2][2] {
-				if tablero[2][1] == "X" || tablero[2][1] == "O" {
+			} else if tablero[1][1] == tablero[1][0] && tablero[1][1] == tablero[1][2] {
+				if tablero[1][1] == "X" || tablero[1][1] == "O" {
 					ganador = true
-					tablero[2][3] = horizontal1
+					horizontal2 = "\u2190"
 				}
 			}
 
-			if tablero[3][2] == tablero[3][1] && tablero[3][2] == tablero[3][0] {
-				if tablero[3][2] == "X" || tablero[3][2] == "O" {
+			if tablero[2][2] == tablero[2][1] && tablero[2][2] == tablero[2][0] {
+				if tablero[2][2] == "X" || tablero[2][2] == "O" {
 					ganador = true
-					tablero[3][3] = horizontal1
+					horizontal3 = "\u2190"
 				}
-			} else if tablero[3][2] == tablero[2][2] && tablero[3][2] == tablero[1][2] {
-				if tablero[3][2] == "X" || tablero[3][2] == "O" {
+			} else if tablero[2][2] == tablero[1][2] && tablero[2][2] == tablero[0][2] {
+				if tablero[2][2] == "X" || tablero[2][2] == "O" {
 					ganador = true
-					tablero[4][2] = arriba1
+					vertical3 = "\u2191"
 				}
 
 			}
 
 			/*DIBUJITO*/
-			for x = 0; x < len(tablero); x++ {
-				for y = 0; y < len(tablero[x]); y++ {
-					if x == 0 {
-						if y < 3 {
-							fmt.Printf("%2s  ", tablero[x][y])
-						} else {
-							fmt.Printf("%2s  \n", tablero[x][y])
-						}
+			fmt.Printf("             %1s\n", diagonalabajo)
+			fmt.Printf(" %1s | %1s | %1s %1s\n", tablero[0][0], tablero[0][1], tablero[0][2], horizontal1)
+			fmt.Println("-----------")
+			fmt.Printf(" %1s | %1s | %1s %1s\n", tablero[1][0], tablero[1][1], tablero[1][2], horizontal2)
+			fmt.Println("-----------")
+			fmt.Printf(" %1s | %1s | %1s %1s\n", tablero[2][0], tablero[2][1], tablero[2][2], horizontal3)
+			fmt.Printf(" %1s   %1s   %1s %1s\n", vertical1, vertical2, vertical3, diagonalarriba)
 
-					} else if x > 0 && x < 4 {
-						if y < 2 {
-							fmt.Printf("%2s |", tablero[x][y])
-						} else if y > 1 && y < 3 {
-							fmt.Printf("%2s  ", tablero[x][y])
-						} else if y < 4 {
-							fmt.Printf("%2s  \n", tablero[x][y])
-						}
-
-					} else if x == 4 {
-						if y < 3 {
-							fmt.Printf("%2s  ", tablero[x][y])
-						} else {
-							fmt.Printf("%2s  \n", tablero[x][y])
-						}
-					}
-				}
-				if x > 0 && x < 3 {
-					fmt.Println("\n-----------")
-				}
-
-			}
 			if ganador {
 				fmt.Print("Has ganado ")
 				if i%2 != 0 {
@@ -162,7 +140,7 @@ func main() {
 				} else {
 					fmt.Print(player2)
 				}
-			} else if i == 8 {
+			} else if i == 9 {
 				fmt.Print("Es un empate")
 			}
 			for ganador || i == 9 {
@@ -175,10 +153,18 @@ func main() {
 
 			if repetir == "s" {
 
-				tablero = [5][4]string{}
+				tablero = [3][3]string{}
 				gameover = false
 				ganador = false
 				repetir = ""
+				horizontal1 = ""
+				horizontal2 = ""
+				horizontal3 = ""
+				vertical1 = ""
+				vertical2 = ""
+				vertical3 = ""
+				diagonalarriba = ""
+				diagonalabajo = ""
 				i = 0
 				break
 			} else if repetir == "n" {

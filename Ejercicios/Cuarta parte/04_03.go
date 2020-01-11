@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	saludo()
+	fmt.Print(saludo())
 }
-func saludo() {
-	fmt.Print("Hola mundo")
+func saludo() string {
+	return "Hola mundo"
 }

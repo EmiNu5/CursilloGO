@@ -16,3 +16,4 @@ func printAllCollors() {
 		fmt.Printf("%s ", fmt.Sprintf("\u001b[38;5;%dm%3d", i, i))
 	}
 	fmt.Println(reset)
+}

@@ -3,10 +3,11 @@ package main
 import "fmt"
 
 func main() {
-	var unString string = "HELLO PEOPLE"
-	inRed(unString)
+	var unString string = "THE MANDALORIAN"
+	fmt.Print(inRed(unString))
 }
-func inRed(unString string) {
-	const inRed string = "\033[1;31m%s\033[0m"
-	fmt.Printf(inRed, unString)
+func inRed(unString string) string {
+	const inRed string = "\u001b[31m"
+	const reinicio string = "\u001b[0m"
+	return inRed + unString + reinicio
 }

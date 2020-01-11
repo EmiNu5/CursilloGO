@@ -4,9 +4,10 @@ import "fmt"
 
 func main() {
 	var unString string = "QUE ONDA LA PEOPLE"
-	inYelow(unString)
+	fmt.Print(inYelow(unString))
 }
-func inYelow(unString string) {
+func inYelow(unString string) string {
 	const yellow string = " \u001b[33m"
-	fmt.Print(yellow, unString)
+	const reinicio string = "\u001b[0m"
+	return yellow + unString + reinicio
 }

@@ -4,9 +4,11 @@ import "fmt"
 
 func main() {
 	var unString string = "HELLO PEOPLE"
-	inGreen(unString)
+	fmt.Println(inGreen(unString))
 }
-func inGreen(unString string) {
-	const InGreen string = "\033[1;32m%s\033[0m"
-	fmt.Printf(InGreen, unString)
+func inGreen(unString string) string {
+	const green string = "\u001b[32m"
+	const reinicio string = "\u001b[0m"
+
+	return green + unString + reinicio
 }

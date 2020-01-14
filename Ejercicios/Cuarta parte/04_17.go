@@ -10,7 +10,7 @@ func main() {
 
 	var unString string = "holalea"
 	var inicio int = 3
-	var largo int = 80
+	var largo int = 5
 
 	fmt.Print(substr(unString, inicio, largo))
 }
@@ -23,7 +23,7 @@ func substr(unString string, inicio int, largo int) string {
 		return "un string vacío"
 	}
 	if largo+inicio > len(unString) {
-		for i = inicio - 1; i < len(unString)-1; i++ {
+		for i = inicio - 1; i < len(unString); i++ {
 			nuevoString = append(nuevoString, unString[i])
 		}
 	} else {

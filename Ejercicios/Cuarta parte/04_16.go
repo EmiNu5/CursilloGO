@@ -9,15 +9,19 @@ func main() {
 	// Si el índice es inválido devolver un string vacío
 
 	var unString string = "leandrete"
-	var num int = 8
+	var num int = 6
 
-	fmt.Printf("%c", indice(unString, num))
+	fmt.Printf("%s", indice(unString, num))
 }
-func indice(unString string, num int) byte {
+func indice(unString string, num int) string {
+	var i int
+	var aux []byte
 
 	if num > len(unString) || num <= 0 {
-		return ' '
+		return ""
 	}
-	return unString[num-1]
-
+	for i = num - 1; i < len(unString); i++ {
+		aux = append(aux, unString[i])
+	}
+	return string(aux)
 }

@@ -18,18 +18,16 @@ func substr(unString string, inicio int, largo int) string {
 
 	var nuevoString []byte
 	var i int
+	var valorDeCorte int = largo + inicio
 
 	if inicio <= 0 || inicio >= len(unString) {
 		return "un string vacío"
 	}
-	if largo+inicio > len(unString) {
-		for i = inicio - 1; i < len(unString); i++ {
-			nuevoString = append(nuevoString, unString[i])
-		}
-	} else {
-		for i = inicio - 1; i < inicio+largo-1; i++ {
-			nuevoString = append(nuevoString, unString[i])
-		}
+	if len(unString) < largo+inicio {
+		valorDeCorte = len(unString)
+	}
+	for i = inicio - 1; i < valorDeCorte; i++ {
+		nuevoString = append(nuevoString, unString[i])
 	}
 	return string(nuevoString)
 }

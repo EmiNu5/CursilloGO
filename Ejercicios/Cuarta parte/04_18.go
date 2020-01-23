@@ -15,12 +15,13 @@ func main() {
 }
 func findFirstChar(unString string, unChar byte) int {
 	var i int
+	var indiceEncontrado int = -1
 
 	for i = 0; i < len(unString); i++ {
 		if unString[i] == unChar {
-			return i - 1
+			indiceEncontrado = i - 1
 			break
 		}
 	}
-	return -1
+	return indiceEncontrado
 }

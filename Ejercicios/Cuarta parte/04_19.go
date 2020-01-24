@@ -9,9 +9,9 @@ func main() {
 	var unString string = "jijiji"
 	var unChar byte = 'i'
 
-	fmt.Printf("%s", findAllChar(unString, unChar))
+	fmt.Printf("%d", findAllChar(unString, unChar))
 }
-func findAllChar(unString string, unChar byte) string {
+func findAllChar(unString string, unChar byte) []int {
 	var unSlice []int
 	var i int
 
@@ -21,5 +21,5 @@ func findAllChar(unString string, unChar byte) string {
 		}
 	}
 
-	return fmt.Sprint(unSlice)
+	return unSlice
 }

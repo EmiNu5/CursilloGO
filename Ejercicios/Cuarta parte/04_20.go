@@ -3,36 +3,28 @@ package main
 import "fmt"
 
 func main() {
-	// 20. Construir una función que dados dos strings devuelva
-	//  un entero que represente el índice de la primer ocurrencia del segundo string en el primero.
-	//   Si el string no se encuentra devolver -1. (nombrarla findFirstString).
-	var primerString string = "programar"
-	var segundoString string = "mar"
-
-	fmt.Println(findFirstString(primerString, segundoString))
+	fmt.Println(findFirstString("El primer string va a ser 17", "va"))
 }
-func findFirstString(primerString string, segundoString string) int {
+
+func findFirstString(aString string, searchedString string) int {
+	var found bool
 	var i int
 	var j int
-	var coincidencia int = 0
-	var indice int = -1
 
-	for i = 0; i < len(primerString); i++ {
-		fmt.Println("indice", i)
-		for ; j < len(segundoString); j++ {
-			if primerString[i] == segundoString[j] {
-				coincidencia++
-			} else {
+	for i = 0; i < len(aString); i++ {
+		found = true
+		for j = 0; j < len(searchedString); j++ {
+			if i+j >= len(aString) || aString[i+j] != searchedString[j] {
+				found = false
 				break
 			}
 		}
-		fmt.Println("coincidencia", coincidencia)
-		if coincidencia == len(segundoString) {
-			fmt.Println(coincidencia, "==", len(segundoString))
-			indice = len(primerString) - coincidencia
+		if found {
 			break
 		}
-
 	}
-	return indice
+	if found {
+		return i
+	}
+	return -1
 }

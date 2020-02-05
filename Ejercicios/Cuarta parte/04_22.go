@@ -11,8 +11,8 @@ func main22() {
 
 	// > ["Programar", "es", "divertido!"]
 
-	var aString string = "Programar es divertido!"
-	var aByte byte = ' '
+	var aString string = "Programar es divertido"
+	var aByte byte = 'ñ'
 
 	fmt.Printf("%#v", splitByChar(aString, aByte))
 }
@@ -22,12 +22,18 @@ func splitByChar(aString string, aByte byte) []string {
 	var i int
 
 	for i = 0; i < len(aString); i++ {
-		if i != len(aString)-1 && aString[i] != aByte {
+		if aString[i] != aByte {
 			letras = append(letras, aString[i])
 		} else {
-			palabras = append(palabras, string(letras))
-			letras = []byte{}
+			if len(letras) > 0 {
+				palabras = append(palabras, string(letras))
+				letras = []byte{}
+			}
 		}
 	}
+	if len(letras) > 0 {
+		palabras = append(palabras, string(letras))
+	}
+
 	return palabras
 }

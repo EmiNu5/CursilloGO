@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main11() {
 
 	//11. Construir una función que dado un string imprima en pantalla el string dado en color amarillo. (nombrarla printInYellow)
 

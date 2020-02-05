@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main8() {
 	var unString string = "QUE ONDA LA PEOPLE"
 	fmt.Print(inYelow(unString))
 }

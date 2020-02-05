@@ -6,7 +6,7 @@ import "fmt"
 // devuelva un slice de enteros que contengan los índices de todas las ocurrencias
 // del segundo string en el primero (nombrarla findAllString).
 
-func main() {
+func main21() {
 	var firstString string = "papapas"
 	var secondString string = "papapa"
 

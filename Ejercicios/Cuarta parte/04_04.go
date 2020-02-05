@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main4() {
 	var unString string = "hola ffffff"
 	printTitle(unString)
 }

@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main14() {
 	// 14. Construir una función que dado un string devuelva el mismo string pero sin espacios por detrás. (nombrarla rightTrim)
 
 	var unString string = "hola  mundo como estas?  "

@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main17() {
 	// 17. Contruir una función que dado un string y dos números enteros
 	// devuelva el string a partir del primer número usado como índice de comienzo y
 	//  usando el segundo como largo del string. Si el largo es mayor al posible restante, devolver el string hasta el final.

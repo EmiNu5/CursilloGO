@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main18() {
 
 	// 18. Construir una función que dado un string y un byte devuelva
 	//  un entero que represente el índice de la primer ocurrencia de ese byte en el string.

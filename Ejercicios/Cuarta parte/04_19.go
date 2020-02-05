@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main19() {
 	// 19. Construir una función que dado un string y un byte devuelva
 	//  un slice de enteros que represente todos los índices con las ocurrencias de ese byte en el string
 	//  (nombrarla findAllChar).

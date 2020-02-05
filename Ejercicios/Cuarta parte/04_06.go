@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main6() {
 	var unString string = "HELLO PEOPLE"
 	fmt.Println(inGreen(unString))
 }

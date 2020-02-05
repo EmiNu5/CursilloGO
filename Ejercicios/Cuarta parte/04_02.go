@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main2() {
 	var unString string = "emi"
 	imprimir(unString)
 }

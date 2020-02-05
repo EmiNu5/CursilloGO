@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main20() {
 	fmt.Println(findFirstString("El primer string va a ser 17", "va"))
 }
 

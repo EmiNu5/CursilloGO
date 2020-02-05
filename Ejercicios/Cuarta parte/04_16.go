@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main16() {
 
 	//16. Construir una función que dado un string y un número entero
 	//devuelva el string a partir del número usado como índice.

@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main5() {
 
 	var numero1 int = 78
 	var numero2 int = 4949

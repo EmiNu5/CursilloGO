@@ -8,7 +8,7 @@ import "fmt"
 
 func main21() {
 	var firstString string = "papapas"
-	var secondString string = "papapa"
+	var secondString string = "pa"
 
 	fmt.Println(findAllString(firstString, secondString))
 }

@@ -53,6 +53,15 @@ func main() {
 		main21()
 	case 22:
 		main22()
+	case 23:
+		main23()
+	case 24:
+		main24()
+	case 25:
+		main25()
+	case 26:
+		main26()
+	case 27:
+		main27()
 	}
-
 }

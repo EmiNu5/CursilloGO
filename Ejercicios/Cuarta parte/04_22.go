@@ -12,7 +12,7 @@ func main22() {
 	// > ["Programar", "es", "divertido!"]
 
 	var aString string = "Programar es divertido"
-	var aByte byte = 'ñ'
+	var aByte byte = ' '
 
 	fmt.Printf("%#v", splitByChar(aString, aByte))
 }

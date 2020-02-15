@@ -10,8 +10,8 @@ func main23() {
 	// fmt.Println(strings)
 
 	// > [" cama ", " puerta y ", " mesa"]
-	var firstString string = "emiliano"
-	var secondString string = "ano"
+	var firstString string = "programar"
+	var secondString string = "gra"
 
 	fmt.Printf("%#v", splitByString(firstString, secondString))
 }

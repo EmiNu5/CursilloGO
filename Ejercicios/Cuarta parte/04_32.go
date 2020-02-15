@@ -11,8 +11,8 @@ func anyTrue(bools []bool) bool {
 	var i int
 	var rule bool
 
+	rule = false
 	for i = 0; i < len(bools); i++ {
-		rule = false
 		if bools[i] {
 			rule = true
 			break

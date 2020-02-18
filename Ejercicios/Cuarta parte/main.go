@@ -77,6 +77,12 @@ func main() {
 		main33()
 	case 34:
 		main34()
+	case 35:
+		main35()
+	case 36:
+		main36()
+	case 37:
+		main37()
 	default:
 		fmt.Print("me olvide de mapear")
 	}

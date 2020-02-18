@@ -5,7 +5,7 @@ import "fmt"
 func main38() {
 	var day int
 
-	fmt.Println("Por favor ingrese el numero de la semana")
+	fmt.Println("Por favor ingrese el numero del dia")
 	fmt.Scanln(&day)
 
 	fmt.Println(dayOfWeek(day))

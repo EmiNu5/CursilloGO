@@ -8,5 +8,8 @@ func main15() {
 
 	var str1 string = "  hola como andas?   "
 
-	fmt.Println(leftTrim(rightTrim(str1)) + ".")
+	fmt.Println(trim(str1) + ".")
+}
+func trim(str1 string) string {
+	return leftTrim(rightTrim(str1))
 }

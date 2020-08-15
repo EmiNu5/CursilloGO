@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main(){
+func main() {
 	var i int
 	var j int
 	var k int
@@ -15,18 +15,18 @@ func main(){
 	fmt.Println("Ingresar un string")
 	fmt.Scan(&string1)
 
-	fmt.Println("Ingresar los",cant," strings")
+	fmt.Println("Ingresar loss", cant, " strings")
 
-	for i=0;i<cant;i++{
+	for i = 0; i < cant; i++ {
 		fmt.Scan(&strings[i])
 	}
 
-	for i=0;i<len(strings);i++{
+	for i = 0; i < len(strings); i++ {
 		stringelegido = strings[i]
-		for j=0;j<len(string1);j++{
+		for j = 0; j < len(string1); j++ {
 			coincidencia = true
-			for k=0;k<len(stringelegido);k++{
-				if stringelegido[k] != string1[j+k]{
+			for k = 0; k < len(stringelegido); k++ {
+				if stringelegido[k] != string1[j+k] {
 					coincidencia = false
 					break
 				}
@@ -35,7 +35,7 @@ func main(){
 				break
 			}
 		}
-		if coincidencia{
+		if coincidencia {
 			break
 		}
 	}

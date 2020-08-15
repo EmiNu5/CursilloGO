@@ -15,7 +15,7 @@ func main() {
 	fmt.Println("Ingresar un string")
 	fmt.Scan(&string1)
 
-	fmt.Println("Ingresar loss", cant, " strings")
+	fmt.Println("Ingresar los", cant, " strings")
 
 	for i = 0; i < cant; i++ {
 		fmt.Scan(&strings[i])

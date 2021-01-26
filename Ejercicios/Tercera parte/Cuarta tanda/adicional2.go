@@ -85,7 +85,7 @@ func main() {
 
 			casillaCorrecta = false
 			for !casillaCorrecta {
-				fmt.Printf(" %s ingresa la (X,Y) donde ira la ficha X\n", jugadorActual)
+				fmt.Printf(" %s ingresa las cordenadas (X,Y) donde ira la ficha %s\n", jugadorActual, fichaActual)
 				if i%2 != 0 && pc == "s" {
 					for {
 						x = rand.Intn(maxValor-minValor) + 1
